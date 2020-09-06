@@ -290,6 +290,7 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
             builders.
 
         """
+        # TODO remove hardcoded permission
         if self.locks.check_lockstring(looker, "perm(Builder)"):
             return "{}(#{})".format(self.name, self.id)
         return self.name
@@ -416,7 +417,8 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
                 return [self] if quiet else self
 
         if use_dbref is None:
-            use_dbref = self.locks.check_lockstring(self, "_dummy:perm(Builder)")
+            # TODO remove hardcoded permission
+            use_dbref = self.locks.check_lockstring(self, "_dummy:perm(Builder) or zperm(admin)")
 
         if use_nicks:
             # do nick-replacement on search
@@ -1038,6 +1040,7 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
         # commands may set this (create an item and you should be its
         # controller, for example)
 
+        # TODO remove hardcoded permission names
         self.locks.add(";".join([
             "control:perm(Developer)",  # edit locks/permissions, delete
             "examine:perm(Builder)",   # examine properties
@@ -1952,6 +1955,7 @@ class DefaultRoom(DefaultObject):
         super(DefaultRoom, self).basetype_setup()
         self.locks.add(";".join(["get:false()",
                                  "puppet:false()"]))  # would be weird to puppet a room ...
+        # TODO replace with Zones logic?
         self.location = None
 
 

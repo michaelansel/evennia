@@ -55,6 +55,7 @@ class DefaultChannel(with_metaclass(TypeclassBase, ChannelDB)):
         # register ourselves with the channelhandler.
         _CHANNEL_HANDLER.add(self)
 
+        # TODO remove hardcoded permission names?
         self.locks.add("send:all();listen:all();control:perm(Admin)")
 
     def at_channel_creation(self):

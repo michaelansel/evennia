@@ -74,6 +74,7 @@ def create_objects():
     god_account.swap_typeclass(account_typeclass, clean_attributes=True)
     god_account.basetype_setup()
     god_account.at_account_creation()
+    # TODO remove hardcoded permission names?
     god_account.locks.add("examine:perm(Developer);edit:false();delete:false();boot:false();msg:all()")
     # this is necessary for quelling to work correctly.
     god_account.permissions.add("Developer")
@@ -90,6 +91,7 @@ def create_objects():
     god_character.id = 1
     god_character.save()
     god_character.db.desc = _('This is User #1.')
+    # TODO remove hardcoded permission names?
     god_character.locks.add("examine:perm(Developer);edit:false();delete:false();boot:false();msg:all();puppet:false()")
     god_character.permissions.add("Developer")
 

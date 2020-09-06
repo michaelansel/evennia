@@ -98,6 +98,7 @@ class Bot(DefaultAccount):
         # the text encoding to use.
         self.db.encoding = "utf-8"
         # A basic security setup (also avoid idle disconnects)
+        # TODO remove hardcoded permission names?
         lockstring = "examine:perm(Admin);edit:perm(Admin);delete:perm(Admin);" \
                      "boot:perm(Admin);msg:false();noidletimeout:true()"
         self.locks.add(lockstring)

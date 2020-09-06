@@ -817,6 +817,8 @@ class CmdDig(ObjManipCommand):
         new_room = create.create_object(typeclass, room["name"],
                                         aliases=room["aliases"],
                                         report_to=caller)
+        if hasattr(location, 'location'):
+            new_room.location = location.location
         lockstring = self.new_room_lockstring.format(id=caller.id)
         new_room.locks.add(lockstring)
         alias_string = ""

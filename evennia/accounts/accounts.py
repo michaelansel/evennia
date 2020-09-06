@@ -638,6 +638,7 @@ class DefaultAccount(with_metaclass(TypeclassBase, AccountDB)):
 
         """
         # A basic security setup
+        # TODO remove hardcoded permission (maybe, see above docstring)
         lockstring = "examine:perm(Admin);edit:perm(Admin);" \
                      "delete:perm(Admin);boot:perm(Admin);msg:all();" \
                      "noidletimeout:perm(Builder) or perm(noidletimeout)"

@@ -162,6 +162,7 @@ class CmdCharCreate(COMMAND_DEFAULT_CLASS):
                                              home=default_home,
                                              permissions=permissions)
         # only allow creator (and developers) to puppet this char
+        # TODO remove hardcoded permission names?
         new_character.locks.add("puppet:id(%i) or pid(%i) or perm(Developer) or pperm(Developer)" %
                                 (new_character.id, account.id))
         account.db._playable_characters.append(new_character)

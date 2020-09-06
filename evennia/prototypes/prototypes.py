@@ -193,6 +193,7 @@ def save_prototype(**kwargs):
     prototype = stored_prototype[0].prototype if stored_prototype else {}
 
     kwargs['prototype_desc'] = kwargs.get("prototype_desc", prototype.get("prototype_desc", ""))
+    # TODO remove hardcoded permission names?
     prototype_locks = kwargs.get(
         "prototype_locks", prototype.get('prototype_locks', "spawn:all();edit:perm(Admin)"))
     is_valid, err = validate_lockstring(prototype_locks)
